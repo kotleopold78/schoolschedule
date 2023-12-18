@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<style type="text/css">
+   
+   .lessons{ 
+ 
+    background: #fc0; 
+    font-size: 13pt;
+   }
+      .lessons1{ 
+ 
+    background: #FFA07A; 
+    font-size: 13pt;
+   }
+         .tt{ 
+ 
+    //background: #FFA07A; 
+    font-size: 11pt;
+	line-height: 75%
+   }
+         .warning1{ 
+//transform:translate(10%,10%); 
+text-shadow: 2px 1px 1px black;
+    color: #ff0000; 
+    font-size: 52pt;
+   }
+
+</style> 
+ </head>
+ <body>
+ 
+<table border=1 width="100%"><td align='center'><div style="font-size: 32px;" id="curdat">Здесь будет дата</div></td></tr></table><table border=0 width="100%"><tr><td align="center">
+<div class="tt" id="raspis" ></div>
+
+<script type="text/javascript">
+    
+    /* каждую секунду получаем текущую дату и время */
+    /* и вставляем значение в блок с id "current_date_time_block2" */
+    setInterval(function () {
+let workd=["Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота"];
+	let date =  new Date();
+	let timestamp = Date.now();
+	timestamp=1703955600-Math.floor(timestamp/1000);
+let hour=date.getHours();
+let minu=date.getMinutes();
+let sec=date. getSeconds();
+let day=date.getDate();
+let mouns=date.getMonth()+1;
+let workday=date.getDay();
+let Year=date.getFullYear();
+if (sec==0) {
+ur();
+
+//bizz();
+
+
+  
+		document.getElementById('curdat').innerHTML = day+"-"+mouns+"-"+Year+",  "+workd[workday];
+ } 
+	}, 1000);
+</script>
+<script type="text/javascript">
+function getXmlHttp(){
+  var xmlhttp;
+ 
+ 
+    xmlhttp = new XMLHttpRequest();
+  
+  return xmlhttp;
+}
+window.onload = function(){
+
+ur();
+
+}
+
+
+function ur() {
+	
+	var req = getXmlHttp()  
+
+	req.onreadystatechange = function() {  
+  
+
+		if (req.readyState == 4) { 
+
+			if(req.status == 200) { 
+                 
+//var arrayOfStrings = req.responseText.split("|");				
+//document.getElementById('urok').innerHTML = arrayOfStrings[0];
+
+document.getElementById('raspis').innerHTML = req.responseText;
+
+			}
+			
+		}
+
+	}
+
+   
+	req.open('GET', 'shed.php', true);  
+
+	
+	req.send(null);  // отослать запрос
+
+}
+function bizz() {
+	
+	var req = getXmlHttp()  
+
+	req.onreadystatechange = function() {  
+		if (req.readyState == 4) { 
+			if(req.status == 200) { 
+                 
+//var arrayOfStrings = req.responseText.split("|");				
+document.getElementById('bizz').innerHTML = req.responseText;
+/*if ((arrayOfStrings.length)==10){
+document.getElementById('raspis').innerHTML = "<table border=5 width=100%><tr><td>"+arrayOfStrings[1]+"</td><td>"+arrayOfStrings[2]+"</td><td>"+arrayOfStrings[3]+"</td></tr><tr><td>"+arrayOfStrings[4]+"</td><td>"+arrayOfStrings[5]+"</td><td>"+arrayOfStrings[6]+"</td></tr><tr><td>"+arrayOfStrings[7]+"</td><td>"+arrayOfStrings[8]+"</td><td>"+arrayOfStrings[9]+"</td></tr></table>";
+}else{
+document.getElementById('raspis').innerHTML = "Все танцуют";
+}*/
+			}
+			
+		}
+
+	}
+
+	req.open('GET', 'bizz.php', true);  
+	req.send(null);  // отослать запрос
+
+}
+</script>

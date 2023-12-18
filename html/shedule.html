@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<style type="text/css">
+    .lesson{ 
+ 
+
+    font-size: 24pt;
+   }
+       .zamena{ 
+ 
+background: #FFA07A; 
+    font-size: 24pt;
+   }
+      .timer{ 
+ 
+
+    font-size: 60pt;
+   }
+   .lessons{ 
+ 
+    background: #fc0; 
+    font-size: 24pt;
+   }
+      .lessons1{ 
+ 
+    background: #FFA07A; 
+    font-size: 24pt;
+   }
+         .warning1{ 
+ 
+    color: #FF0000; 
+    font-size: 42pt;
+   }
+
+</style> 
+ </head>
+ <body>
+ 
+<table border=1 width="100%"><td><div style="font-size: 80px;" id="curdat"></div></div></td><td><div style="font-size: 86px;" id="current_date_time_block2" style="font-size: 50px;"></div></td></tr></table><table border=0 width="100%"><tr><td align="center"><div style="font-size: 50px;"><div id="urok" class="timer"></div></div> </table>
+<div id="raspis" style="font-size: 22px;"></div><table border=1 width="100%"><tr><td><div id="bizz" style="font-size: 60px;">Информация для вас:<br></div></td></tr></table>
+
+<script type="text/javascript">
+    
+    /* каждую секунду получаем текущую дату и время */
+    /* и вставляем значение в блок с id "current_date_time_block2" */
+    setInterval(function () {
+let workd=["Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота"];
+	let date =  new Date();
+	let timestamp = Date.now();
+	timestamp=1703955600-Math.floor(timestamp/1000);
+let hour=date.getHours();
+let minu=date.getMinutes();
+let sec=date. getSeconds();
+let day=date.getDate();
+let mouns=date.getMonth()+1;
+let workday=date.getDay();
+let Year=date.getFullYear();
+if ((sec==5)||(sec==35)) {
+ur();
+//temper();
+//bizz();
+}
+if (hour<10) hour="0"+hour;
+if (minu<10) minu="0"+minu;
+if (sec<10) sec="0"+sec;
+        document.getElementById('current_date_time_block2').innerHTML = hour+':'+minu+':'+sec;
+		document.getElementById('curdat').innerHTML = day+"-"+mouns+"-"+Year+"   "+workd[workday];
+  document.getElementById('bizz').innerHTML = 'Время до нового года: '+timestamp+ ' секунд';  
+	}, 1000);
+</script>
+<script type="text/javascript">
+function getXmlHttp(){
+  var xmlhttp;
+ 
+ 
+    xmlhttp = new XMLHttpRequest();
+  
+  return xmlhttp;
+}
+window.onload = function(){
+
+ur();
+}
+
+
+function ur() {
+	
+	var req = getXmlHttp()  
+
+	req.onreadystatechange = function() {  
+  
+
+		if (req.readyState == 4) { 
+
+			if(req.status == 200) { 
+                 
+var arrayOfStrings = req.responseText.split("|");				
+document.getElementById('urok').innerHTML = arrayOfStrings[0];
+if ((arrayOfStrings.length)==2){
+document.getElementById('raspis').innerHTML = arrayOfStrings[1];
+}else{
+document.getElementById('raspis').innerHTML = arrayOfStrings.length;
+}
+			}
+			
+		}
+
+	}
+
+   
+	req.open('GET', 'uroks.php', true);  
+
+	
+	req.send(null);  // отослать запрос
+
+}
+function bizz() {
+	
+	var req = getXmlHttp()  
+
+	req.onreadystatechange = function() {  
+		if (req.readyState == 4) { 
+			if(req.status == 200) { 
+                 
+//var arrayOfStrings = req.responseText.split("|");				
+document.getElementById('bizz').innerHTML = req.responseText;
+/*if ((arrayOfStrings.length)==10){
+document.getElementById('raspis').innerHTML = "<table border=5 width=100%><tr><td>"+arrayOfStrings[1]+"</td><td>"+arrayOfStrings[2]+"</td><td>"+arrayOfStrings[3]+"</td></tr><tr><td>"+arrayOfStrings[4]+"</td><td>"+arrayOfStrings[5]+"</td><td>"+arrayOfStrings[6]+"</td></tr><tr><td>"+arrayOfStrings[7]+"</td><td>"+arrayOfStrings[8]+"</td><td>"+arrayOfStrings[9]+"</td></tr></table>";
+}else{
+document.getElementById('raspis').innerHTML = "Все танцуют";
+}*/
+			}
+			
+		}
+
+	}
+
+	req.open('GET', 'bizz.php', true);  
+	req.send(null);  // отослать запрос
+
+}
+</script>
