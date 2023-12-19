@@ -1,6 +1,6 @@
 ﻿<?php
-include_once "./shedule/bases.php";
-include_once "./shedule/var.php";
+include_once "./schedule/bases.php";
+include_once "./schedule/var.php";
 $times=localtime();
 //$times[2]=14;
 //$times[6]=3;
