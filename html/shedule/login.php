@@ -7,7 +7,7 @@ if (isset($_POST['pass'])) {
     
     $password = $_POST['pass'] ?? '';
 
-  
+  $password=password_hash($password, PASSWORD_DEFAULT);
       
         setcookie('passt', $password, 0, '/');
         header('Location: index.php');
