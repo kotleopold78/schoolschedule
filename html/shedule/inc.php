@@ -21,7 +21,8 @@ if (!isset($_COOKIE["passt"])){
 	include ("login.php");
 	exit;
 }
-	if ($_COOKIE["passt"]!=$admpass){
+if (!password_verify($admpass,$_COOKIE["passt"]){
+	//if ($_COOKIE["passt"]!=$admpass){
 		include ("login.php");
 	exit;
 }
