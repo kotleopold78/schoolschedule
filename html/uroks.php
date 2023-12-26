@@ -45,10 +45,14 @@ $ti=$itog[$i+1]-$itog1;
 if ($ti>0){
 echo ", до звонка : ";
 echo $ti;
+if (($ti<20)&&($ti>9){
+echo " Минут";
+}else{	
 $timod=($ti%10);
 if (($timod>4)||($timod==0)) echo " Минут";
 if (($timod<5)&&($timod>1)) echo " Минуты";
 if ($timod==1) echo " Минута";
+}
 }else{
 	echo " Звонок";
 }
