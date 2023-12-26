@@ -45,7 +45,9 @@ $ti=$itog[$i+1]-$itog1;
 if ($ti>0){
 echo ", до звонка : ";
 echo $ti;
-echo " Минут";
+if ($ti>4) echo " Минут";
+if (($ti<5)&&($ti>1)) echo " Минуты";
+if ($ti==1) echo " Минута";
 }else{
 	echo " Звонок";
 }
