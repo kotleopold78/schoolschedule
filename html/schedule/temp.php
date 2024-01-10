@@ -108,7 +108,10 @@ if ($last<0) {
 					if (($lele>0)&&($r[$i]!="")&&($i!=0)){
 							
 						//$sql="INSERT INTO uroki.peremen (`day`, `class`, `lesson`, `predmet`) VALUES (".($datbeg1+$dayles-1).",".$i.",".$lele.",'".$r[$i]."')";
+						if ($mounts<10) {$data=$yea.'0'.$mounts;
+						}else{
 						$data=$yea.$mounts;
+						}
 						if (($datbeg1+($dayles-1))<10) {$data=$data."0".($datbeg1+($dayles-1));
 						}else {
 						$data=$data.($datbeg1+($dayles-1));
