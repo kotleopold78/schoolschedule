@@ -33,7 +33,7 @@ for ($workday=1; $workday<=7; $workday++){
 	}else{
 	$dob=0;
 	}
-	$dates1=date("d",mktime(0, 0, 0, date("m")  , (date("d")-$times[6]+$workday+$dob), date("Y")));
+	$dates1=mktime(0, 0, 0, date("m")  , (date("d")-$times[6]+$workday+$dob), date("Y"));
 	$dates=date("ymd",dates1);
 	//echo $dates;
 	//echo "<br>";
