@@ -33,7 +33,8 @@ for ($workday=1; $workday<=7; $workday++){
 	}else{
 	$dob=0;
 	}
-	$dates=date("y").date("m").date("d",mktime(0, 0, 0, date("m")  , (date("d")-$times[6]+$workday+$dob), date("Y")));
+	$dates1=date("d",mktime(0, 0, 0, date("m")  , (date("d")-$times[6]+$workday+$dob), date("Y")));
+	$dates=date("ymd",dates1);
 	//echo $dates;
 	//echo "<br>";
 	$sql='SELECT * FROM `peremen` where begin='.$dates;
@@ -52,7 +53,7 @@ if (mysqli_num_rows($result)!=0){
 		echo "<tr bgcolor=#90EE90><td> </td><td> </td><td> </td><td> </td><td  align='center' bgcolor=#90EE90 > ";
 	}
 echo $week[$workday-1];
-echo "</td><td>".date("d",mktime(0, 0, 0, date("m")  , (date("d")-$times[6]+$workday+$dob), date("Y")))."-".date("m")."-".date('y')."</td><td> </td><td> </td><td></td></tr>";//<table rules=cols width='100%'>";
+echo "</td><td>".date("d-m-y",$dates1)."</td><td> </td><td> </td><td></td></tr>";//<table rules=cols width='100%'>";
 
 for ($line=1; $line<=$lessonend; $line++){
 	$sql="SELECT * FROM `raspisanie` where `day`=".$workday." And lesson=".$line;
