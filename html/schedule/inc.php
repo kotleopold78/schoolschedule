@@ -40,7 +40,7 @@ if (!password_verify($admpass,$_COOKIE["passt"]){
 <div id="teach" style="font-size: 22px;">Портал службы расписаний </div>
 
 <table border=1 width="100%"><tr><td>Список служебных ссылок</td><td>Сегодня :<div id="current_date_time_block2" style="font-size: 22px;">10:41:45<br>9-4-2023<br>Воскресенье</div></td>
-</tr><tr><td></a><br><a href='permanent.php' >Замена постоянного расписания</a><br><a href='temp.php' >Добавление временного расписания</a></td></tr></table>
+</tr><tr><td></a><br><a href='permanent.php' >Замена постоянного расписания</a><br><a href='tempus.php' >Добавление временного расписания</a></td></tr></table>
 
 
 <script type="text/javascript">
