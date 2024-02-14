@@ -1,4 +1,4 @@
-?php
+<?php
 include "inc.php";
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
@@ -140,7 +140,7 @@ if ($last<0) {
 							//echo $sql."<br>";
 							//$sql = mysqli_real_escape_string($link, $sql);
 							$result=mysqli_query($link, $sql);
-							//$dayobn=0;
+							$obnow=1;
 						}
 						$sql="INSERT INTO peremen(`class`, `lesson`, `predmet`, `begin`) VALUES (".$i.",".$lele.",'".$r[$i]."',".$data.")";
 						
