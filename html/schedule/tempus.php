@@ -140,7 +140,7 @@ if ($last<0) {
 							//echo $sql."<br>";
 							//$sql = mysqli_real_escape_string($link, $sql);
 							$result=mysqli_query($link, $sql);
-							$obnow=1;
+							$obnow=0;
 						}
 						$sql="INSERT INTO peremen(`class`, `lesson`, `predmet`, `begin`) VALUES (".$i.",".$lele.",'".$r[$i]."',".$data.")";
 						
